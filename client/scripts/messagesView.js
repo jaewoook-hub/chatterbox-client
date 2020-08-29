@@ -1,14 +1,16 @@
+
 var MessagesView = {
 
   $chats: $('#chats'),
 
   initialize: function() {
+    debugger;
     // MessagesView.$form.on('submit', MessagesView.);
     // MessageView.initialize();
   },
 
   renderMessage: function(message) {
-    console.log(message);
+    // console.log(message);
     var html = '';
     html += MessagesView.render(message);
     MessagesView.$chats.append(html);

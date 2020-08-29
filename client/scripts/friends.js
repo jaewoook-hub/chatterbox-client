@@ -4,10 +4,16 @@ var Friends = {
   $user: $('.username'),
 
   initialize: function() {
-    Friends.$user.on('click', Friends.toggleStatus);
+    // FormView.$form.on('submit', FormView.handleSubmit);
+
+    Friends.$user.click(function() {
+      console.log('user was clicked');
+      Friends.toggleStatus();
+    });
   },
 
   toggleStatus: function() {
+    console.log('toggleStatus toggled');
   }
 
 };
