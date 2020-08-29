@@ -7,10 +7,17 @@ var FormView = {
   },
 
   handleSubmit: function(event) {
-    // Stop the browser from submitting the form
     event.preventDefault();
-    //var uri =
-    //var escapedMSG = encodeURIComponent(uri);
+    var message = {
+      username: window.location.search.substring(10),
+      text: $('#message').val(),
+      // roomname: $('select').val()
+      roomname: 'lobby'
+    };
+
+    Parse.create(message, function() {
+      $('#message').val('');
+    });
     console.log('click!');
   },
 
