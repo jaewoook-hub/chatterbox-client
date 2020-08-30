@@ -22,13 +22,13 @@ var MessagesView = {
   },
 
   render: function() {
-    //debugger;
+    debugger;
     Messages
       .items()
-      //.filter(room.isSelected(message))
+      .filter(message => Rooms.isSelected(message.roomname))
       .each((message) => {
         var $message = MessageView.render(message);
-        MessagesView.$chats.prepend($message);
+        MessagesView.$chats.append($message);
       });
     // _.each(Messages._data, (message) => {
     //   var $message = MessageView.render(message);

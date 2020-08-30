@@ -22,6 +22,7 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
+      Rooms.update(data.results, RoomsView.render);
       debugger;
       Messages.updates(data.results, MessagesView.render);
       // examine the response from the server request:

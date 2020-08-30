@@ -12,7 +12,7 @@ var FormView = {
       username: window.location.search.substring(10),
       text: FormView.$form.find('#message').val(),
       // roomname: $('select').val()
-      roomname: 'lobby'
+      roomname: Rooms.selected
     };
 
     Parse.create(message, function(data) {
