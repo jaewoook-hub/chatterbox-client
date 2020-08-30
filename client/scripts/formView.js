@@ -10,13 +10,16 @@ var FormView = {
     event.preventDefault();
     var message = {
       username: window.location.search.substring(10),
-      text: $('#message').val(),
+      text: FormView.$form.find('#message').val(),
       // roomname: $('select').val()
       roomname: 'lobby'
     };
 
-    Parse.create(message, function() {
+    Parse.create(message, function(data) {
       $('#message').val('');
+      debugger;
+      _.extend(message, data);
+      Messages.add(message, MessagesView.render);
     });
     console.log('click!');
   },

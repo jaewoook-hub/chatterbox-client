@@ -10,18 +10,20 @@ var App = {
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
-    Friends.initialize();
+    // Friends.initialize();
 
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    debugger;
+    // debugger;
 
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
+      debugger;
+      Messages.updates(data.results, MessagesView.render);
       // examine the response from the server request:
       console.log(data);
 
