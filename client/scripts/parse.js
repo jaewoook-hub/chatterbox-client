@@ -3,7 +3,6 @@ var Parse = {
   server: `http://parse.${window.CAMPUS}.hackreactor.com/chatterbox/classes/messages`,
 
   create: function(message, successCB, errorCB = null) {
-    // todo: save a message to the server
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
       url: Parse.server,
@@ -32,46 +31,4 @@ var Parse = {
       }
     });
   },
-
-
-  getRooms: function(successCB, errorCB = null) {
-    // debugger;
-    $.ajax({
-      url: Parse.server.slice(0, 52) + 'rooms',
-      type: 'GET',
-      data: { order: '-createdAt' },
-      contentType: 'application/json',
-      success: successCB || function (data) {
-        console.log('chatterbox: Message sent');
-      },
-      error: errorCB || function(error) {
-        console.error('chatterbox: Failed to fetch messages', error);
-      }
-    });
-  }
-
 };
-
-// var entityMap = {
-//   '&': '&amp;',
-//   '<': '&lt;',
-//   '>': '&gt;',
-//   '"': '&quot;',
-//   "'": '&#39;',
-//   '/': '&#x2F;',
-//   '`': '&#x60;',
-//   '=': '&#x3D;'
-// };
-
-// var jsEscape = function (str) {
-//   return String(str).replace(/[^\w. ]/gi, function(c) {
-//     return '\\u' + ('0000' + c.charCodeAt(0).toString(16)).slice(-4);
-//   });
-
-// }
-
-// var escapeHtml = function(string) {
-//   return String(string).replace(/[&<>"'`=\/]/g, function fromEntityMap (s) {
-//     return entityMap[s];
-//   });
-// };

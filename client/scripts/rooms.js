@@ -1,38 +1,42 @@
 var Rooms = {
 
+  add: function() {
+
+  },
+
   _data: new Set,
 
-  selected: 'lobby',
+  $roomSel: $('#rooms select'),
+
+  selected: $('#rooms select').val() || 'lobby',
 
   isSelected: function(roomname) {
-    //return true;
+    debugger;
     return roomname === Rooms.selected ||
            !roomname && Rooms.selected === 'lobby';
   },
 
-  update: function(messages) {
+  update: function(messages, cb) {
     _.chain(messages)
       .pluck('roomname')
       .uniq()
       .each(room => Rooms._data.add(room));
+    cb();
+  },
 
-  }
-  // $roomsAvail: [],
 
-  // initialize: function() {
-  //   Parse.getRooms(function(data) {
-  //     for (let val of data) {
-  //       debugger;
-  //       if (val.roomname !== '') {
-  //         let safeRoomName = render(val.roomname);
-  //         Rooms.$roomsAvail.push(safeRoomName);
-  //       }
-  //     }
-  //   });
+  renderRooms: function(cb = MessagesView.render) {
+    debugger;
+    for (let roomname of Rooms._data) {
+      if (roomname && roomname !== '') {
+        $('#rooms select').append(Rooms.render({roomname}));
+      }
+    }
+    cb();
+  },
 
-  //   for (let val of Rooms.$roomsAvail) {
-  //     RoomsView.renderRoom(val);
-  //   }
-  // }
+  render: _.template(`
+  <option value="<%- roomname %>"><%- roomname %></option>
+  `)
 
 };

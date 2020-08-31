@@ -1,20 +1,12 @@
-// debugger;
 var Friends = {
 
-  $user: $('.username'),
-
-  initialize: function() {
-    // FormView.$form.on('submit', FormView.handleSubmit);
-
-    // $('chats').on('click', Friends.$user, Friends.toggleStatus);
-    Friends.$user.click(function() {
-      console.log('user was clicked');
+  addClickHandlers: function() {
+    $('.username').click(function() {
       Friends.toggleStatus();
     });
   },
 
   toggleStatus: function() {
-    console.log('toggleStatus toggled');
   }
 
 };
